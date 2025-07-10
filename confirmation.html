@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🎉 Order Confirmed!</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="order.html">Order</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="confirmation">
+      <h2>Thank you for your order!</h2>
+      <div id="confirmation-details"></div>
+    </section>
+  </main>
+
+  <script>
+    const order = JSON.parse(localStorage.getItem("orderDetails"));
+    const confirmationDiv = document.getElementById("confirmation-details");
+
+    if (order) {
+      confirmationDiv.innerHTML = `
+        <p><strong>Name:</strong> ${order.name}</p>
+        <p><strong>Address:</strong> ${order.address}</p>
+        <p><strong>Phone:</strong> ${order.phone}</p>
+        <h3>Ordered Items:</h3>
+        <ul>
+          ${order.items.map(item => `<li>${item.name} - $${item.price}</li>`).join("")}
+        </ul>
+        <h4>Total: $${order.total}</h4>
+      `;
+      localStorage.removeItem("orderDetails");
+    } else {
+      confirmationDiv.innerHTML = "<p>No order found.</p>";
+    }
+  </script>
+
+  <footer>
+    <p>&copy; 2025 Sweet Treats. All rights reserved.</p>
+  </footer>
+</body>
+</html>

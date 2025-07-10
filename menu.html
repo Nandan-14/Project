@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cake Menu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🎂 Our Cake Menu</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html" class="active">Menu</a>
+      <a href="order.html">Order</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="menu-section">
+      <div class="cake-card">
+        <img src="C:\vs\image\cake cho.jpg" alt="Chocolate Cake">
+        <h3>Chocolate Delight</h3>
+        <p>Rich chocolate sponge with silky ganache frosting.</p>
+        <p class="price">$25</p>
+        <button onclick="addToCart('Chocolate', 28)">Add to Cart</button>
+      </div>
+
+      <div class="cake-card">
+        <img src="C:\vs\image\vanilla.jpg" alt="Vanilla Cake">
+        <h3>Vanilla Dream</h3>
+        <p>Light and fluffy vanilla cake with creamy icing.</p>
+        <p class="price">$20</p>
+        <button onclick="addToCart('Vanilla', 28)">Add to Cart</button>
+      </div>
+
+      <div class="cake-card">
+        <img src="C:\vs\image\Strawberry.jpg" alt="Strawberry Cake">
+        <h3>Strawberry Kiss</h3>
+        <p>Fresh strawberry layers with whipped cream frosting.</p>
+        <p class="price">$22</p>
+        <button onclick="addToCart('Strawberry', 28)">Add to Cart</button>
+      </div>
+
+      <div class="cake-card">
+        <img src="C:\vs\image\red.jpg" alt="Red Velvet Cake">
+        <h3>Red Velvet</h3>
+        <p>Moist red velvet sponge with cream cheese frosting.</p>
+        <p class="price">$24</p>
+        <button onclick="addToCart('Red Velvet', 28)">Add to Cart</button>
+      </div>
+
+      <div class="cake-card">
+        <img src="C:\vs\image\coffee.jpg" alt="Coffee Cake">
+        <h3>Coffee Crave</h3>
+        <p>Soft coffee-flavored cake for caffeine lovers.</p>
+        <p class="price">$23</p>
+        <button onclick="addToCart('Coffee ', 28)">Add to Cart</button>
+      </div>
+
+      <div class="cake-card">
+        <img src="C:\vs\image\black forest.jpg" alt="Black Forest Cake">
+        <h3>Black Forest</h3>
+        <p>Classic cherry-chocolate cake with whipped cream.</p>
+        <p class="price">$26</p>
+        <button onclick="addToCart('Black forest', 28)">Add to Cart</button>
+      </div>
+
+      <div class="cake-card">
+  <img src="C:\vs\image\triple cho.jpg" alt="Triple Chocolate Fudge">
+  <h3>Triple Chocolate Fudge</h3>
+  <p>Decadent layers of dark, milk, and white chocolate.</p>
+  <p class="price">$28</p>
+  <button onclick="addToCart('Triple Chocolate Fudge', 28)">Add to Cart</button>
+</div>
+
+<div class="cake-card">
+  <img src="C:\vs\image\mango tango.jpg" alt="Mango Tango">
+  <h3>Mango Tango</h3>
+  <p>Tropical mango-flavored sponge with a citrus twist.</p>
+  <p class="price">$26</p>
+  <button onclick="addToCart('Mango Tango', 26)">Add to Cart</button>
+</div>
+
+<div class="cake-card">
+  <img src="C:\vs\image\oreo.jpg" alt="Oreo Cookie Cream">
+  <h3>Oreo Cookie Cream</h3>
+  <p>Crushed Oreos layered in cookies and cream delight.</p>
+  <p class="price">$27</p>
+  <button onclick="addToCart('Oreo Cookie Cream', 27)">Add to Cart</button>
+</div>
+
+<div class="cake-card">
+  <img src="C:\vs\image\red velvet.jpg" alt="Red Velvet Romance">
+  <h3>Red Velvet Romance</h3>
+  <p>Rich red velvet with extra cream cheese layers.</p>
+  <p class="price">$29</p>
+  <button onclick="addToCart('Red Velvet Romance', 29)">Add to Cart</button>
+</div>
+
+<div class="cake-card">
+  <img src="C:\vs\image\rainbow.jpg" alt="Rainbow Layers">
+  <h3>Rainbow Layers</h3>
+  <p>Colorful layers of joy and whipped vanilla cream.</p>
+  <p class="price">$30</p>
+  <button onclick="addToCart('Rainbow Layers', 30)">Add to Cart</button>
+</div>
+
+<div class="cake-card">
+  <img src="C:\vs\image\Strawberry cheese.jpg" alt="Cheesecake Supreme">
+  <h3>Cheesecake Supreme</h3>
+  <p>Silky cheesecake with a graham cracker crust.</p>
+  <p class="price">$32</p>
+  <button onclick="addToCart('Cheesecake Supreme', 32)">Add to Cart</button>
+</div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sweet Treats. All rights reserved.</p>
+  </footer>
+  <script>
+  function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name, price });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'cart.html'; // go to cart after adding
+  }
+</script>
+
+</body>
+</html>

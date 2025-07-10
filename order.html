@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Place Order</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📦 Place Your Order</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="order.html" class="active">Order</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="order-summary">
+      <h2>Your Cart Items:</h2>
+      <div id="order-items"></div>
+      <h3 id="order-total"></h3>
+    </section>
+
+    <section class="order-form">
+      <h2>Enter Your Details</h2>
+      <form onsubmit="submitOrder(event)">
+        <label>Name: <input type="text" id="name" required></label><br>
+        <label>Address: <input type="text" id="address" required></label><br>
+        <label>Phone: <input type="tel" id="phone" required></label><br>
+        <button type="submit">Place Order</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const orderItemsDiv = document.getElementById("order-items");
+    const orderTotal = document.getElementById("order-total");
+
+    let total = 0;
+
+    if (cartItems.length === 0) {
+      orderItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+      cartItems.forEach(item => {
+        total += item.price;
+        const p = document.createElement("p");
+        p.textContent = `${item.name} - $${item.price}`;
+        orderItemsDiv.appendChild(p);
+      });
+      orderTotal.textContent = `Total: $${total}`;
+    }
+
+    function submitOrder(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const address = document.getElementById("address").value;
+      const phone = document.getElementById("phone").value;
+
+      const orderDetails = {
+        name,
+        address,
+        phone,
+        items: cartItems,
+        total
+      };
+
+      // Store in localStorage for confirmation page
+      localStorage.setItem("orderDetails", JSON.stringify(orderDetails));
+
+      // Clear cart
+      localStorage.removeItem("cart");
+
+      // Redirect to confirmation
+      window.location.href = "confirmation.html";
+    }
+  </script>
+
+  <footer>
+    <p>&copy; 2025 Sweet Treats. All rights reserved.</p>
+  </footer>
+</body>
+</html>
